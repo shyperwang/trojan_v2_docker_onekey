@@ -1,10 +1,9 @@
 # TSP & Trojan-Go / V2Ray 容器化管理部署脚本
 
-![GitHub top language](https://img.shields.io/github/languages/top/h31105/trojan_v2_docker_onekey?style=flat)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/h31105/trojan_v2_docker_onekey?style=flat)
-![Visitors](https://visitor-badge.glitch.me/badge?page_id=h31105.trojan_v2_docker_onekey)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fh31105%2Ftrojan_v2_docker_onekey.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fh31105%2Ftrojan_v2_docker_onekey?ref=badge_shield)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b9dd1b56b54b4a45bc34fede5a71ac0a)](https://app.codacy.com/gh/h31105/trojan_v2_docker_onekey?utm_source=github.com&utm_medium=referral&utm_content=h31105/trojan_v2_docker_onekey&utm_campaign=Badge_Grade_Settings)
+![GitHub top language](https://img.shields.io/github/languages/top/h31105/deployX.sh?style=flat)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/h31105/deployX.sh?style=flat)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fh31105%2FdeployX.sh.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fh31105%2FdeployX.sh?ref=badge_shield)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8446a6dc2f904122809e05ba61e83f62)](https://www.codacy.com/gh/h31105/deployX.sh/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=h31105/deployX.sh&amp;utm_campaign=Badge_Grade)
 [![Chat on Telegram](https://img.shields.io/badge/chat%20-%20telegram-brightgreen.svg)](https://t.me/trojanv2)
 
 基于 Docker 容器架构的 Trojan-Go/VLESS/VMess-TCP/WS-TLS 分流部署&管理脚本
@@ -32,7 +31,7 @@ command -v wget >/dev/null 2>&1 || sudo apt -y install wget
 2.  下载并执行脚本
 
 ```Bash
-wget -N --no-check-certificate -q https://cdn.jsdelivr.net/gh/h31105/trojan_v2_docker_onekey/deploy.sh && \
+wget -N --no-check-certificate -q https://raw.githubusercontent.com/h31105/deployX.sh/master/deploy.sh && \
 chmod +x deploy.sh && bash deploy.sh
 ```
 
@@ -63,31 +62,28 @@ chmod +x deploy.sh && bash deploy.sh
 
 ## 协议、CDN 及客户端支持状况
 
-|  Protocol | Transport | MUX | Direct | CDN | Qv2ray② | Shadowrocket | Clash | v2rayN(G) |
+|  Protocol | Transport | MUX | Direct | CDN | Qv2ray① | Shadowrocket | Clash | v2rayN(G) |
 | :-------: | :-------: | :-: | :----: | :-: | :-----: | :----------: | :---: | :-------: |
-|   VLESS   | TCP-XTLS① |  ❌  |    ✅   |  ❌  |    ✅    |       ❌      |   ❌   |     ✅     |
 |   VLESS   |  TCP-TLS  |  ✅  |    ✅   |  ❌  |    ✅    |       ✅      |   ❌   |     ✅     |
 |   VLESS   |   WS-TLS  |  ✅  |    ✅   |  ✅  |    ✅    |       ✅      |   ❌   |     ✅     |
 |   VMess   |  TCP-TLS  |  ✅  |    ✅   |  ❌  |    ✅    |       ✅      |   ✅   |     ✅     |
 |   VMess   |   WS-TLS  |  ✅  |    ✅   |  ✅  |    ✅    |       ✅      |   ✅   |     ✅     |
-|  Trojan③  |  TCP-TLS  |  ❌  |    ✅   |  ❌  |    ✅    |       ✅      |   ✅   |     ✅     |
+|  Trojan②  |  TCP-TLS  |  ❌  |    ✅   |  ❌  |    ✅    |       ✅      |   ✅   |     ✅     |
 | Trojan-Go |  TCP-TLS  |  ✅  |    ✅   |  ❌  |    ✅    |       ✅      |   ❌   |     ❌     |
 | Trojan-Go |   WS-TLS  |  ✅  |    ✅   |  ✅  |    ✅    |       ✅      |   ❌   |     ❌     |
 
 ✅完全支持 ❌不支持
 
-**①** 暂不支持 VLESS PREVIEW XTLS 配置的脚本部署（计划中）。
+**①** Qv2Ray 客户端需根据协议类型安装对应插件及核心，才能正常使用。
 
-**②** Qv2Ray 客户端需根据协议类型安装对应插件及核心，才能正常使用。
-
-**③** Trojan-Go 兼容原版 Trojan 协议。
+**②** Trojan-Go 兼容原版 Trojan 协议。
 
 **可同时部署 Trojan-Go 和 V2Ray 服务端，最大支持共用分流 2 种 WS-TLS 和 2 种 TCP-TLS（协议类型按需自由组合）**
 
 ## 部署建议
 
 脚本部署的完整架构拓扑如下图所示：
-<img src="https://raw.githubusercontent.com/h31105/trojan_v2_docker_onekey/master/docs/tp.png" width="100%" height="100%">
+<img src="https://raw.githubusercontent.com/h31105/deployX.sh/master/docs/tp.png" width="100%" height="100%">
 
 -   TLS-Shunt-Proxy 负责证书全自动管理和网站服务（HTTPS 默认 443 HTTP 80 自动跳转）
 
@@ -191,4 +187,4 @@ chmod +x deploy.sh && bash deploy.sh
 
 ## Stargazers over time
 
-[![Stargazers over time](https://starchart.cc/h31105/trojan_v2_docker_onekey.svg)](https://starchart.cc/h31105/trojan_v2_docker_onekey)
+[![Stargazers over time](https://starchart.cc/h31105/deployX.sh.svg)](https://starchart.cc/h31105/deployX.sh)
